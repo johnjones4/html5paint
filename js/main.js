@@ -1,5 +1,14 @@
 requirejs.config({
-	baseUrl: 'js'
+	baseUrl: 'js',
+	shim: {
+		'vendor/backbone': {
+			deps: ['vendor/underscore'],
+			exports: 'Backbone'
+		},
+		'vendor/underscore': {
+			exports: '_'
+		}
+	}
 });
 
 requirejs(['vendor/backbone','models/painting','modesl/color'],
