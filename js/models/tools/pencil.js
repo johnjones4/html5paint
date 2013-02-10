@@ -1,10 +1,12 @@
-define(['../../vendor/backbone','./tool'],function(Backbone,Tool) {
+define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Color) {
 	return Tool.extend({
 		defaults: {
 			namespace: 'pencil',
 			lastPoint: null,
+			pathPoints: [],
 			width: 1,
-			pathPoints: []
+			strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
+			fillColor: new Color({red:0,green:0,blue:255,alpha:255})
 		},
 		initialize: function() {
 
@@ -20,7 +22,11 @@ define(['../../vendor/backbone','./tool'],function(Backbone,Tool) {
 
 			var context = this.get('canvas').getContext("2d");
 			this.get('painting').displayInContext(context);
-			context.strokeWidth = this.get('width');
+			context.lineWidth = this.get('width');
+			context.lineCap = 'round';
+			context.lineJoin = 'round';
+			if (this.get('strokeColor')) context.strokeStyle = this.get('strokeColor').cssColor();
+			if (this.get('fillColor')) context.fillStyle = this.get('fillColor').cssColor();
 		},
 		mouseUp: function(event,point) {
 			this._super('mouseUp',event,point);

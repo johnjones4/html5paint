@@ -7,9 +7,10 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 			namespace: 'tool',
 			canvas: null,
 			painting: null,
+			down: false,
+			width: 1,
 			strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
-			fillColor: new Color({red:0,green:0,blue:255,alpha:255}),
-			down: false
+			fillColor: new Color({red:0,green:0,blue:255,alpha:255})
 		},
 		initialize: function() {
 
@@ -50,9 +51,6 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 			};
 		},
 		mouseDown: function(event,point) {
-			var context = this.get('canvas').getContext("2d");
-			if (this.get('strokeColor')) context.strokeStyle = this.get('strokeColor').cssColor();
-			if (this.get('fillColor')) context.fillStyle = this.get('fillColor').cssColor();
 			this.set({
 				down: true
 			});

@@ -14,13 +14,13 @@ requirejs.config({
 	}
 });
 
-requirejs(['models/painting','models/color','models/tools/pencil','vendor/jquery'],
-function(Painting,Color,Pencil,$) {
+requirejs(['models/painting','models/color','models/tools/ellipse','vendor/jquery'],
+function(Painting,Color,Ellipse,$) {
 	var element = document.getElementById("canvas");
 	var c = element.getContext("2d");
 
 	var painting = new Painting();
-	var pencil = new Pencil({strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
+	var pencil = new Ellipse({strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
 			fillColor: new Color({red:0,green:0,blue:255,alpha:255})});
 	pencil.attach(painting,canvas);
 });
