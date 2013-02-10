@@ -12,7 +12,14 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-        <canvas id="canvas" width="640" height="480"></canvas>
+        <div id="canvas_viewport"></div>
+        <ul id="toolbar"></ul>
+        <script type="text/template" id="template_canvas">
+            <canvas id="<%= htmlID %>" width="<%= width %>" height="<%= height %>"></canvas>
+        </script>
+        <script type="text/template" id="template_tool_button">
+            <input type="button" class="tool_button <%= classname %>" value="<%= name %>" />
+        </script>
         <script data-main="js/main.js" src="js/vendor/require.js"></script>
     </body>
 </html>

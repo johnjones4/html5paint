@@ -1,11 +1,12 @@
 define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Color) {
 	return Tool.extend({
 		defaults: {
-			namespace: 'rectangle',
+			namespace: 'ellipse',
+			name: 'Ellipse',
 			downPoint: null,
 			width: 1,
-			strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
-			fillColor: new Color({red:0,green:0,blue:255,alpha:255})
+			strokeColor: null,
+			fillColor: null
 		},
 		initialize: function() {
 

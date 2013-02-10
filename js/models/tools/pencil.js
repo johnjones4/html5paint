@@ -2,11 +2,12 @@ define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Colo
 	return Tool.extend({
 		defaults: {
 			namespace: 'pencil',
+			name: 'Pencil',
 			lastPoint: null,
 			pathPoints: [],
 			width: 1,
-			strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
-			fillColor: new Color({red:0,green:0,blue:255,alpha:255})
+			strokeColor: null,
+			fillColor: null
 		},
 		initialize: function() {
 

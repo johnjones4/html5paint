@@ -14,13 +14,22 @@ requirejs.config({
 	}
 });
 
-requirejs(['models/painting','models/color','models/tools/ellipse','vendor/jquery'],
-function(Painting,Color,Ellipse,$) {
-	var element = document.getElementById("canvas");
-	var c = element.getContext("2d");
+requirejs(['vendor/jquery','models/environment','views/canvas','utilities/toolFactory','views/toolButton'],
+function($,Environment,Canvas,ToolFactory,ToolButton) {
+	var environment = new Environment();
+	var canvas = new Canvas({
+		model: environment,
+		el: $('#canvas_viewport')
+	});
 
-	var painting = new Painting();
-	var pencil = new Ellipse({strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
-			fillColor: new Color({red:0,green:0,blue:255,alpha:255})});
-	pencil.attach(painting,canvas);
+	for(var tool in ToolFactory) {
+		var $item = $('<li></li>');
+		$('#toolbar').append($item);
+		new ToolButton({
+			el: $item,
+			model: ToolFactory[tool]({
+				environment: environment
+			})
+		});
+	}
 });

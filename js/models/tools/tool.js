@@ -5,23 +5,31 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 	return Backbone.Model.extend({
 		defaults: {
 			namespace: 'tool',
-			canvas: null,
-			painting: null,
+			name: 'Tool',
+			environment: null,
 			down: false,
 			width: 1,
-			strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
-			fillColor: new Color({red:0,green:0,blue:255,alpha:255})
+			strokeColor: null,
+			fillColor: null
 		},
 		initialize: function() {
 
 		},
-		attach: function(painting,canvas) {
+		attach: function() {
 			var _this = this;
-			_this.set({
-				canvas: canvas,
-				painting: painting
+			var lastTool = _this.get('environment').get('tool');
+			if (lastTool) lastTool.detach();
+			_this.get('environment').set({
+				tool: _this
 			});
-			$(canvas).on('mousedown',function(event) {
+			_this.set({
+				canvas: this.get('environment').get('canvas'),
+				painting: this.get('environment').get('painting'),
+				strokeColor: this.get('environment').get('strokeColor'),
+				fillColor: this.get('environment').get('fillColor'),
+				width: this.get('environment').get('lineWidth')
+			});
+			$(this.get('canvas')).on('mousedown',function(event) {
 				var point = _this.translateXYForEvent(event);
 				_this.mouseDown(event,point);
 			})
