@@ -12,13 +12,15 @@ define(['../vendor/backbone','../vendor/underscore'],function(Backbone,_) {
             this.$el.html( template );
 		},
 		events:  {
-			'click input[type=button]': 'attachTool'
+			'click a': 'attachTool'
 		},
 		attachTool: function(event) {
+			if (event.preventDefault) event.preventDefault();
 			if (this.model)
 				this.model.attach();
 			else
 				alert('Not Implemented!');
+			return false;
 		}
 	});
 });
