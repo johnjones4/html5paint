@@ -4,7 +4,7 @@ define(['../vendor/backbone','./painting','./color'],function(Backbone,Painting,
 			painting: new Painting(),
 			canvas: null,
 			strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
-			fillColor: null,
+			fillColor: new Color({red:0,green:0,blue:100,alpha:255}),
 			lineWidth: 3,
 			tool: null
 		},

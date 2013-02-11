@@ -5,8 +5,8 @@ define(['../vendor/backbone','../vendor/underscore'],function(Backbone,_) {
 		},
 		render: function(){
             var variables = {
-            	'name': this.model.get('name'),
-            	'classname': this.model.get('namespace')
+            	'name': this.model ? this.model.get('name') : 'not-implmented',
+            	'classname': this.model ? this.model.get('namespace') : 'not-implmented'
             };
             var template = _.template( $("#template_tool_button").html(), variables);
             this.$el.html( template );
@@ -15,7 +15,10 @@ define(['../vendor/backbone','../vendor/underscore'],function(Backbone,_) {
 			'click input[type=button]': 'attachTool'
 		},
 		attachTool: function(event) {
-			this.model.attach();
+			if (this.model)
+				this.model.attach();
+			else
+				alert('Not Implemented!');
 		}
 	});
 });

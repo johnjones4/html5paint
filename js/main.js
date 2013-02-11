@@ -14,22 +14,12 @@ requirejs.config({
 	}
 });
 
-requirejs(['vendor/jquery','models/environment','views/canvas','utilities/toolFactory','views/toolButton'],
-function($,Environment,Canvas,ToolFactory,ToolButton) {
+requirejs(['vendor/jquery','models/environment','views/canvas','utilities/toolFactory'],
+function($,Environment,Canvas,ToolFactory) {
 	var environment = new Environment();
 	var canvas = new Canvas({
 		model: environment,
 		el: $('#canvas_viewport')
 	});
-
-	for(var tool in ToolFactory) {
-		var $item = $('<li></li>');
-		$('#toolbar').append($item);
-		new ToolButton({
-			el: $item,
-			model: ToolFactory[tool]({
-				environment: environment
-			})
-		});
-	}
+	ToolFactory.generateToolButtons(environment);
 });

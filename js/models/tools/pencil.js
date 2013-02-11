@@ -7,7 +7,8 @@ define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Colo
 			pathPoints: [],
 			width: 1,
 			strokeColor: null,
-			fillColor: null
+			fillColor: null,
+			ignoreFill: false
 		},
 		initialize: function() {
 
@@ -34,7 +35,7 @@ define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Colo
 			
 			var context = this.get('canvas').getContext("2d");
 
-			if (this.get('fillColor') && this.get('pathPoints').length > 1) {
+			if (this.get('fillColor') && this.get('pathPoints').length > 1 && !this.get('ignoreFill')) {
 				this.get('painting').displayInContext(context);
 				var points = this.get('pathPoints');
 				context.beginPath();

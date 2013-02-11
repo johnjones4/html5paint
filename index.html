@@ -15,11 +15,15 @@
     <body>
         <div id="canvas_viewport"></div>
         <ul id="toolbar"></ul>
+        <ul id="colors"></ul>
         <script type="text/template" id="template_canvas">
             <canvas class="painting" id="<%= htmlID %>" width="<%= width %>" height="<%= height %>"></canvas>
         </script>
         <script type="text/template" id="template_tool_button">
             <input type="button" class="tool_button <%= classname %>" value="<%= name %>" />
+        </script>
+        <script type="text/template" id="template_color_button">
+            <input type="button" class="color_button <%= classname %>" value="<%= name %>" />
         </script>
         <script data-main="js/main.js" src="js/vendor/require.js"></script>
     </body>

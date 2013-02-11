@@ -10,7 +10,8 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 			down: false,
 			width: 1,
 			strokeColor: null,
-			fillColor: null
+			fillColor: null,
+			ignoreFill: false
 		},
 		initialize: function() {
 

@@ -6,7 +6,8 @@ define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Colo
 			downPoint: null,
 			width: 1,
 			strokeColor: null,
-			fillColor: null
+			fillColor: null,
+			ignoreFill: false
 		},
 		initialize: function() {
 
@@ -36,7 +37,7 @@ define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Colo
 			var centerY = down.y + (point.y-down.y)/2;
 			this.drawEllipse(context,centerX,centerY,(point.x-down.x),(point.y-down.y));
 			this.get('painting').displayInContext(context);
-			if (this.get('fillColor')) {
+			if (this.get('fillColor') && !this.get('ignoreFill')) {
 				context.fill();
 			}
 			context.stroke();
