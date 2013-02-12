@@ -1,0 +1,135 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+ * v2.0 | 20110126
+ * License: none (public domain) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  background: #cccccc;
+  font-family: Arial;
+  font-weight: light;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+#primary {
+  width: 800px;
+  height: 600px;
+  background: white; }
+
+h1 {
+  background: url(../img/top_left.png) no-repeat left 0, url(../img/top_right.png) no-repeat right 0;
+  background-color: #0214a0;
+  height: 13px;
+  font-size: 14px;
+  padding: 2px 0;
+  color: white;
+  text-align: center;
+  border-bottom: solid 1px black; }
+
+.menu {
+  height: 14px;
+  font-size: 14px;
+  padding: 2px 0;
+  background: white;
+  color: black;
+  border-bottom: solid 1px black; }
+
+.painting {
+  background: white;
+  cursor: crosshair;
+  margin: 2px 18px 0 0;
+  float: left;
+  border: solid 1px black; }
+
+.toolbar {
+  width: 56px;
+  border-left: solid 1px black;
+  border-top: solid 1px black;
+  margin: 2px 2px 0 2px;
+  overflow: auto;
+  float: left;
+  background: black; }
+
+.toolbar li {
+  display: inline; }
+
+.toolbar li a {
+  display: block;
+  width: 27px;
+  height: 34px;
+  border-right: black solid 1px;
+  border-bottom: black solid 1px;
+  text-indent: -9999px;
+  float: left;
+  background: url(../img/sprite.png);
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  cursor: inherit; }
+
+.toolbar li a.active {
+  opacity: 0.5; }
+
+.toolbar li a.not-implemented {
+  background: white url(../img/not-implemented.png); }
+
+.toolbar li a.pencil {
+  background-position: -27px -108px; }
+
+.toolbar li a.stroke-rect {
+  background-position: 0 -180px; }
+
+.toolbar li a.fill-rect {
+  background-position: -27px -180px; }
+
+.toolbar li a.stroke-ellipse {
+  background-position: 0 -249px; }
+
+.toolbar li a.fill-ellipse {
+  background-position: -27px -249px; }
+
+/* Use for the color picker at the bottom of the screen */

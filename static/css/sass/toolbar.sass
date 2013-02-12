@@ -1,0 +1,49 @@
+$iconWidth: 27px
+$iconHeight: 34px
+
+.toolbar 
+	width: 56px
+	border-left: solid 1px #000
+	border-top: solid 1px #000
+	margin: 2px 2px 0 2px
+	overflow: auto
+	float: left
+	background: #000
+
+.toolbar li
+	display: inline
+
+.toolbar li a
+	display: block
+	width: $iconWidth
+	height: $iconHeight
+	border-right: #000 solid 1px
+	border-bottom: #000 solid 1px
+	text-indent: -9999px
+	float: left
+	background: url(../img/sprite.png)
+	margin: 0
+	padding: 0
+	opacity: 1.0
+	cursor: inherit
+
+.toolbar li a.active
+	opacity: 0.5
+
+.toolbar li a.not-implemented
+	background: #fff url(../img/not-implemented.png)
+
+.toolbar li a.pencil
+	background-position: (-1 * $iconWidth) ((-3 * ($iconHeight + 1)) - 3)
+
+.toolbar li a.stroke-rect
+	background-position: 0 ((-5 * ($iconHeight + 1)) - 5)
+
+.toolbar li a.fill-rect
+	background-position: (-1 * $iconWidth) ((-5 * ($iconHeight + 1)) - 5)
+
+.toolbar li a.stroke-ellipse
+	background-position: 0 ((-7 * ($iconHeight + 1)) - 4)
+
+.toolbar li a.fill-ellipse
+	background-position: (-1 * $iconWidth) ((-7 * ($iconHeight + 1)) - 4)

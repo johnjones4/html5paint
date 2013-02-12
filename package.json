@@ -1,0 +1,7 @@
+{
+  "name": "HTML5Paint",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "*"
+  }
+}
