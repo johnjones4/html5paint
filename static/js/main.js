@@ -14,12 +14,13 @@ requirejs.config({
 	}
 });
 
-requirejs(['vendor/jquery','models/environment','views/canvas','views/toolBar','views/menu'],
-function($,Environment,Canvas,ToolBar,Menu) {
+requirejs(['vendor/jquery','models/environment','views/canvas','views/toolBar','views/menu','views/colorSelector'],
+function($,Environment,Canvas,ToolBar,Menu,ColorSelector) {
 	var environment = new Environment();
 
 	$('#primary')
 		.append(new Menu({model:environment}).$el)
 		.append(new ToolBar({model:environment}).$el)
-		.append(new Canvas({model: environment}).$el);
+		.append(new Canvas({model: environment}).$el)
+		.append(new ColorSelector({model: environment}).$el);
 });

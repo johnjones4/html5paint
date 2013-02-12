@@ -58,7 +58,8 @@ body {
 #primary {
   width: 800px;
   height: 600px;
-  background: white; }
+  background: white;
+  position: relative; }
 
 h1 {
   background: url(../img/top_left.png) no-repeat left 0, url(../img/top_right.png) no-repeat right 0;
@@ -81,18 +82,21 @@ h1 {
 .painting {
   background: white;
   cursor: crosshair;
-  margin: 2px 18px 0 0;
   float: left;
-  border: solid 1px black; }
+  border: solid 1px black;
+  left: 60px;
+  top: 38px;
+  position: absolute; }
 
 .toolbar {
   width: 56px;
   border-left: solid 1px black;
   border-top: solid 1px black;
-  margin: 2px 2px 0 2px;
   overflow: auto;
-  float: left;
-  background: black; }
+  position: absolute;
+  background: black;
+  top: 38px;
+  left: 2px; }
 
 .toolbar li {
   display: inline; }
@@ -133,3 +137,28 @@ h1 {
   background-position: -27px -249px; }
 
 /* Use for the color picker at the bottom of the screen */
+.colorSelector {
+  position: absolute;
+  left: 60px;
+  bottom: 2px;
+  border: solid 1px black;
+  width: 560px;
+  height: 40px; }
+
+.colorSelector ul {
+  display: block;
+  float: right;
+  width: 490px; }
+
+.colorSelector ul li {
+  display: inline; }
+
+.colorSelector ul li a {
+  display: block;
+  float: left;
+  width: 40px;
+  height: 19px;
+  border: solid 1px black;
+  border-bottom: none;
+  text-indent: -9999px;
+  cursor: inherit; }

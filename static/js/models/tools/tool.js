@@ -27,11 +27,20 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 			_this.set({
 				canvas: this.get('environment').get('canvas'),
 				painting: this.get('environment').get('painting'),
-				strokeColor: this.get('environment').get('strokeColor'),
-				fillColor: this.get('environment').get('fillColor'),
 				width: this.get('environment').get('lineWidth'),
 				attached: true
 			});
+			if (this.get('environment').get('strokeColor')) {
+				_this.set({
+					strokeColor: this.get('environment').get('strokeColor').get('color')
+				})
+			}
+			if (this.get('environment').get('fillColor')) {
+				_this.set({
+					strokeColor: this.get('environment').get('fillColor').get('color')
+				})
+			}
+
 			$(this.get('canvas')).on('mousedown',function(event) {
 				var point = _this.translateXYForEvent(event);
 				_this.mouseDown(event,point);

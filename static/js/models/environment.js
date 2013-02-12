@@ -3,8 +3,8 @@ define(['../vendor/backbone','./painting','./color'],function(Backbone,Painting,
 		defaults: {
 			painting: new Painting(),
 			canvas: null,
-			strokeColor: new Color({red:0,green:0,blue:0,alpha:255}),
-			fillColor: new Color({red:0,green:0,blue:100,alpha:255}),
+			strokeColor: null,
+			fillColor: null,
 			lineWidth: 3,
 			tool: null
 		},
@@ -12,6 +12,19 @@ define(['../vendor/backbone','./painting','./color'],function(Backbone,Painting,
 			this.on("change:tool", function(model) {
 				console.log('Tool changed to ' + model.get('tool').get('name'));
 			});
+			this.on("change:fillColor change:strokeColor",function(model) {
+				if (model.get('strokeColor') && model.get('tool')) {
+					model.get('tool').set({
+						strokeColor: model.get('strokeColor').get('color')
+					});
+				}
+				if (model.get('fillColor') && model.get('tool')) {
+					model.get('tool').set({
+						strokeColor: model.get('fillColor').get('color')
+					});
+				}
+				console.log('Color changed');
+			})
 		}
 	});
 });
