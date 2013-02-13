@@ -45,7 +45,7 @@ table {
   border-spacing: 0; }
 
 body {
-  background: #cccccc;
+  background: black;
   font-family: Arial;
   font-weight: light;
   -webkit-touch-callout: none;
@@ -59,7 +59,10 @@ body {
   width: 800px;
   height: 600px;
   background: white;
-  position: relative; }
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  margin: -300px 0 0 -400px; }
 
 h1 {
   background: url(../img/top_left.png) no-repeat left 0, url(../img/top_right.png) no-repeat right 0;
@@ -145,10 +148,21 @@ h1 {
   width: 560px;
   height: 40px; }
 
+.colorSelector .selected {
+  width: 72px;
+  height: 40px;
+  background: #cccccc;
+  float: left; }
+
+.colorSelector .selected .inner {
+  width: 36px;
+  height: 20px;
+  margin: 10px 18px; }
+
 .colorSelector ul {
   display: block;
   float: right;
-  width: 490px; }
+  width: 488px; }
 
 .colorSelector ul li {
   display: inline; }
@@ -156,7 +170,7 @@ h1 {
 .colorSelector ul li a {
   display: block;
   float: left;
-  width: 40px;
+  width: 33px;
   height: 19px;
   border: solid 1px black;
   border-bottom: none;

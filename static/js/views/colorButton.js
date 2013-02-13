@@ -13,6 +13,16 @@ define(['../vendor/jquery','../vendor/backbone','../vendor/underscore'],function
 					}
 				})
 			}
+			var _this = this;
+			_this.ctrlDown = false;
+			$(window).on('keydown',function(event) {
+				if (event.ctrlLeft || event.altKey) {
+					_this.ctrlDown = true;
+				}
+			});
+			$(window).on('keyup',function(event) {
+				_this.ctrlDown = false;
+			});
 		},
 		render: function(){
 			var variables = {
@@ -28,7 +38,7 @@ define(['../vendor/jquery','../vendor/backbone','../vendor/underscore'],function
 		attachColor: function(event) {
 			if (event.preventDefault) event.preventDefault();
 			if (this.model)
-				this.model.attach(true);
+				this.model.attach(this.ctrlDown);
 			else
 				alert('Not Implemented!');
 			return false;

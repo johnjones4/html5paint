@@ -37,7 +37,7 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 			}
 			if (this.get('environment').get('fillColor')) {
 				_this.set({
-					strokeColor: this.get('environment').get('fillColor').get('color')
+					fillColor: this.get('environment').get('fillColor').get('color')
 				})
 			}
 
