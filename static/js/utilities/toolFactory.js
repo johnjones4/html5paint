@@ -2,11 +2,13 @@ define(['../vendor/jquery',
 	'../views/toolButton',
 	'../models/tools/ellipse',
 	'../models/tools/pencil',
-	'../models/tools/rectangle'],function($,
+	'../models/tools/rectangle',
+	'../models/tools/polygon'],function($,
 		ToolButton,
 		Ellipse,
 		Pencil,
-		Rectangle) {
+		Rectangle,
+		Polygon) {
 	return {
 		polygonSelect: function(props) {
 			return null;
@@ -74,10 +76,11 @@ define(['../vendor/jquery',
 		},
 		strokePolygon: function(props) {
 			props.ignoreFill = true;
-			return null;
+			return new Polygon(props);
 		},
 		fillPolygon: function(props) {
-			return null;
+			props.namespace = 'fill-polygon';
+			return new Polygon(props);
 		}
 	};
 });

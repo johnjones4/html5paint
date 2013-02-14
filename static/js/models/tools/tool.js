@@ -51,10 +51,14 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 			}).on('mousemove',function(event) {
 				var point = _this.translateXYForEvent(event);
 				_this.mouseMove(event,point);
+			}).on('dblclick',function(event) {
+				var point = _this.translateXYForEvent(event);
+				_this.dblclick(event,point);
 			});
 		},
 		detach: function() {
 			$(this.get('canvas')).off('mousedown mouseup mousemove');
+			this.end();
 			this.set({
 				canvas: null,
 				painting: null,
@@ -81,6 +85,8 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 				down: false
 			});
 		},
-		mouseMove: function(event,point) {}
+		mouseMove: function(event,point) {},
+		dblclick: function(event,point) {},
+		end: function() {}
 	});
 });

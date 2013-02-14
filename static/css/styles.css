@@ -139,6 +139,12 @@ h1 {
 .toolbar li a.fill-ellipse {
   background-position: -27px -249px; }
 
+.toolbar li a.polygon {
+  background-position: 0 -285px; }
+
+.toolbar li a.fill-polygon {
+  background-position: -27px -285px; }
+
 /* Use for the color picker at the bottom of the screen */
 .colorSelector {
   position: absolute;
