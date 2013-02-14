@@ -12,7 +12,13 @@ define(['../vendor/backbone','./painting','./color','./paletteColor'],function(B
 			this.on("change:tool", function(model) {
 				console.log('Tool changed to ' + model.get('tool').get('name'));
 			});
-			this.on("change:fillColor change:strokeColor",function(model) {
+			this.on("change:fillColor change:strokeColor change:lineWidth",function(model) {
+				if (model.get('lineWidth') && model.get('tool')) {
+					model.get('tool').set({
+						width: model.get('lineWidth')
+					});
+				}
+
 				if (model.get('strokeColor') && model.get('tool')) {
 					model.get('tool').set({
 						strokeColor: model.get('strokeColor').get('color')

@@ -45,7 +45,7 @@ table {
   border-spacing: 0; }
 
 body {
-  background: black;
+  background: black url(../img/monitor.png) no-repeat center 0;
   font-family: Arial;
   font-weight: light;
   -webkit-touch-callout: none;
@@ -60,9 +60,9 @@ body {
   height: 600px;
   background: white;
   position: absolute;
-  top: 45%;
+  top: 112px;
   left: 50%;
-  margin: -300px 0 0 -400px; }
+  margin: 0 0 0 -400px; }
 
 h1 {
   background: url(../img/top_left.png) no-repeat left 0, url(../img/top_right.png) no-repeat right 0;
@@ -87,8 +87,8 @@ h1 {
   cursor: crosshair;
   float: left;
   border: solid 1px black;
-  left: 60px;
-  top: 38px;
+  left: 61px;
+  top: 39px;
   position: absolute; }
 
 .toolbar {
@@ -98,7 +98,7 @@ h1 {
   overflow: auto;
   position: absolute;
   background: black;
-  top: 38px;
+  top: 39px;
   left: 2px; }
 
 .toolbar li {
@@ -149,20 +149,20 @@ h1 {
   height: 40px; }
 
 .colorSelector .selected {
-  width: 72px;
+  width: 70px;
   height: 40px;
   background: #cccccc;
   float: left; }
 
 .colorSelector .selected .inner {
-  width: 36px;
+  width: 34px;
   height: 20px;
   margin: 10px 18px; }
 
 .colorSelector ul {
   display: block;
   float: right;
-  width: 488px; }
+  width: 490px; }
 
 .colorSelector ul li {
   display: inline; }
@@ -176,3 +176,29 @@ h1 {
   border-bottom: none;
   text-indent: -9999px;
   cursor: inherit; }
+
+.lineWidthSelector {
+  width: 55px;
+  height: 100px;
+  border: solid 1px black;
+  overflow: auto;
+  position: absolute;
+  background: white;
+  top: 353px;
+  left: 2px; }
+
+.lineWidthSelector .arrow {
+  background: url(../img/sprite.png) no-repeat -1px -322px;
+  width: 11px;
+  height: 15px;
+  position: absolute;
+  left: 4px;
+  top: 2px; }
+
+.lineWidthSelector .lines {
+  background: url(../img/sprite.png) no-repeat -23px -320px;
+  width: 31px;
+  height: 84px;
+  position: absolute;
+  right: 6px;
+  top: 9px; }
