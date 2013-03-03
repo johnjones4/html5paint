@@ -1,8 +1,8 @@
 define(['../../vendor/backbone','./tool',],function(Backbone,Tool) {
 	return Tool.extend({
 		defaults: {
-			namespace: 'ellipse',
-			name: 'Ellipse',
+			namespace: 'line',
+			name: 'Line',
 			downPoint: null,
 			width: 1,
 			strokeColor: null,
@@ -60,25 +60,11 @@ define(['../../vendor/backbone','./tool',],function(Backbone,Tool) {
 			});
 		},
 		drawAtPoints: function(context,pointA,pointB) {
-			var centerX = pointA.x + (pointB.x-pointA.x)/2;
-			var centerY = pointA.y + (pointB.y-pointA.y)/2;
-			var width = pointB.x-pointA.x;
-			var height = pointB.y-pointA.y;
 			context.beginPath();
-			context.moveTo(centerX, centerY - height/2); // A1
-			context.bezierCurveTo(
-				centerX + width/2, centerY - height/2, // C1
-				centerX + width/2, centerY + height/2, // C2
-				centerX, centerY + height/2); // A2
-			context.bezierCurveTo(
-				centerX - width/2, centerY + height/2, // C3
-				centerX - width/2, centerY - height/2, // C4
-				centerX, centerY - height/2); // A1
+			context.moveTo(pointA.x,pointA.y);
+			context.lineTo(pointB.x,pointB.y);
 			context.closePath();
 			context.stroke();
-			if (this.get('fillColor') && !this.get('ignoreFill')) {
-				context.fill();
-			}
 		}
 	});
 });

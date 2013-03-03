@@ -91,6 +91,9 @@ h1 {
   top: 39px;
   position: absolute; }
 
+.painting.busy {
+  cursor: progress !important; }
+
 .toolbar {
   width: 56px;
   border-left: solid 1px black;
@@ -124,14 +127,50 @@ h1 {
 .toolbar li a.not-implemented {
   background: white url(../img/not-implemented.png); }
 
+.toolbar li a.freehand-select {
+  background-position: 0 0; }
+
+.toolbar li a.rectangle-select {
+  background-position: -27px 0; }
+
+.toolbar li a.rectangle-select {
+  background-position: -27px 0; }
+
+.toolbar li a.spray-can {
+  background-position: 0 -36px; }
+
+.toolbar li a.text {
+  background-position: -27px -36px; }
+
+.toolbar li a.selective-erase {
+  background-position: 0 -73px; }
+
+.toolbar li a.erase {
+  background-position: -27px -73px; }
+
+.toolbar li a.fillcolor {
+  background-position: 0 -108px; }
+
 .toolbar li a.pencil {
   background-position: -27px -108px; }
+
+.toolbar li a.bezier-line {
+  background-position: 0 -144px; }
+
+.toolbar li a.line {
+  background-position: -27px -144px; }
 
 .toolbar li a.stroke-rect {
   background-position: 0 -180px; }
 
 .toolbar li a.fill-rect {
   background-position: -27px -180px; }
+
+.toolbar li a.stroke-round-rect {
+  background-position: 0 -216px; }
+
+.toolbar li a.fill-round-rect {
+  background-position: -27px -216px; }
 
 .toolbar li a.stroke-ellipse {
   background-position: 0 -249px; }

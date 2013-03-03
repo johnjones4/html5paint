@@ -25,7 +25,7 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 				tool: _this
 			});
 			_this.set({
-				canvas: this.get('environment').get('canvas'),
+				canvas: this.get('environment').get('canvas').$el.find('canvas')[0],
 				painting: this.get('environment').get('painting'),
 				width: this.get('environment').get('lineWidth'),
 				attached: true
@@ -41,23 +41,33 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 				})
 			}
 
-			$(this.get('canvas')).on('mousedown',function(event) {
+			$(this.get('canvas')).on('mousedown.tool',function(event) {
 				var point = _this.translateXYForEvent(event);
 				_this.mouseDown(event,point);
 			})
-			.on('mouseup',function(event) {
+			.on('mouseup.tool',function(event) {
 				var point = _this.translateXYForEvent(event);
 				_this.mouseUp(event,point);
-			}).on('mousemove',function(event) {
+			}).on('mousemove.tool',function(event) {
 				var point = _this.translateXYForEvent(event);
 				_this.mouseMove(event,point);
-			}).on('dblclick',function(event) {
+			}).on('dblclick.tool',function(event) {
 				var point = _this.translateXYForEvent(event);
 				_this.dblclick(event,point);
 			});
+			$(window).on('keypress.tool',function(event) {
+				_this.keypress(event);
+			});
+			$(window).on('keydown.tool',function(event) {
+				_this.keydown(event);
+			});
+			$(window).on('keyup.tool',function(event) {
+				_this.keyup(event);
+			});
 		},
 		detach: function() {
-			$(this.get('canvas')).off('mousedown mouseup mousemove');
+			$(this.get('canvas')).off('mousedown.tool mouseup.tool mousemove.tool dblclick.tool');
+			$(window).off('keypress.tool keydown.tool keyup.tool');
 			this.end();
 			this.set({
 				canvas: null,
@@ -75,6 +85,9 @@ define(['../../vendor/backbone','../../vendor/jquery','../color'],function(Backb
 				y: Math.floor(y-offsetY)
 			};
 		},
+		keypress: function(event) {},
+		keydown: function(event) {},
+		keyup: function(event) {},
 		mouseDown: function(event,point) {
 			this.set({
 				down: true

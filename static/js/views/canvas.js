@@ -12,8 +12,15 @@ define(['../vendor/backbone','../vendor/underscore'],function(Backbone,_) {
                   var template = _.template( $("#template_canvas").html(), variables);
                   this.$el.html(template);
                   this.model.set({
-                        canvas: this.$el.find('canvas')[0]
+                        canvas: this
                   });
-		}
+		},
+            setBusy: function(busy) {
+                  if (busy) {
+                        this.$el.find('canvas').addClass('busy');
+                  } else {
+                        this.$el.find('canvas').removeClass('busy');
+                  }
+            }
 	});
 });

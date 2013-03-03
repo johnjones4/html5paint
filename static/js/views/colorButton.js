@@ -15,12 +15,12 @@ define(['../vendor/jquery','../vendor/backbone','../vendor/underscore'],function
 			}
 			var _this = this;
 			_this.ctrlDown = false;
-			$(window).on('keydown',function(event) {
+			$(window).on('keydown.colorbutton',function(event) {
 				if (event.ctrlLeft || event.altKey) {
 					_this.ctrlDown = true;
 				}
 			});
-			$(window).on('keyup',function(event) {
+			$(window).on('keyup.colorbutton',function(event) {
 				_this.ctrlDown = false;
 			});
 		},

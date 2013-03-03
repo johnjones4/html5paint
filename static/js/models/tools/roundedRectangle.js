@@ -1,13 +1,14 @@
-define(['../../vendor/backbone','./tool',],function(Backbone,Tool) {
+define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Color) {
 	return Tool.extend({
 		defaults: {
-			namespace: 'ellipse',
-			name: 'Ellipse',
+			namespace: 'rectangle',
+			name: 'Rectangle',
 			downPoint: null,
 			width: 1,
 			strokeColor: null,
 			fillColor: null,
-			ignoreFill: false
+			ignoreFill: false,
+			cornerRadius: 10
 		},
 		initialize: function() {
 
@@ -40,7 +41,7 @@ define(['../../vendor/backbone','./tool',],function(Backbone,Tool) {
 				var down = this.get('downPoint');
 				var context = this.get('canvas').getContext("2d");
 				this.get('painting').displayInContext(context);
-				this.drawAtPoints(context,down,point);
+				this.drawRoundedRect(context,down.x,down.y,point.x-down.x,point.y-down.y);
 			}
 		},
 		end: function() {
@@ -50,7 +51,7 @@ define(['../../vendor/backbone','./tool',],function(Backbone,Tool) {
 			if (point) {
 				var down = this.get('downPoint');
 				this.get('painting').displayInContext(context);
-				this.drawAtPoints(context,down,point);
+				this.drawRoundedRect(context,down.x,down.y,point.x-down.x,point.y-down.y);
 				this.get('painting').copyFromContext(context);
 			}
 				
@@ -59,21 +60,27 @@ define(['../../vendor/backbone','./tool',],function(Backbone,Tool) {
 				downPoint: null
 			});
 		},
-		drawAtPoints: function(context,pointA,pointB) {
-			var centerX = pointA.x + (pointB.x-pointA.x)/2;
-			var centerY = pointA.y + (pointB.y-pointA.y)/2;
-			var width = pointB.x-pointA.x;
-			var height = pointB.y-pointA.y;
+		drawRoundedRect: function(context,x,y,width,height) {
+			if (width < 0) {
+				x = x + width;
+				width = Math.abs(width);
+			}
+			if (height < 0) {
+				y = y + height
+				height = Math.abs(height);
+			}
+			
+			var radius = this.get('cornerRadius');
 			context.beginPath();
-			context.moveTo(centerX, centerY - height/2); // A1
-			context.bezierCurveTo(
-				centerX + width/2, centerY - height/2, // C1
-				centerX + width/2, centerY + height/2, // C2
-				centerX, centerY + height/2); // A2
-			context.bezierCurveTo(
-				centerX - width/2, centerY + height/2, // C3
-				centerX - width/2, centerY - height/2, // C4
-				centerX, centerY - height/2); // A1
+			context.moveTo(x + radius, y);
+			context.lineTo(x + width - radius, y);
+			context.quadraticCurveTo(x + width, y, x + width, y + radius);
+			context.lineTo(x + width, y + height - radius);
+			context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+			context.lineTo(x + radius, y + height);
+			context.quadraticCurveTo(x, y + height, x, y + height - radius);
+			context.lineTo(x, y + radius);
+			context.quadraticCurveTo(x, y, x + radius, y);
 			context.closePath();
 			context.stroke();
 			if (this.get('fillColor') && !this.get('ignoreFill')) {

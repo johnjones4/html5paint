@@ -1,4 +1,4 @@
-define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Color) {
+define(['../../vendor/backbone','./tool',],function(Backbone,Tool) {
 	return Tool.extend({
 		defaults: {
 			namespace: 'rectangle',
@@ -40,7 +40,7 @@ define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Colo
 				var down = this.get('downPoint');
 				var context = this.get('canvas').getContext("2d");
 				this.get('painting').displayInContext(context);
-				context.strokeRect(down.x,down.y,point.x-down.x,point.y-down.y);
+				this.drawAtPoints(context,down,point);
 			}
 		},
 		end: function() {
@@ -50,17 +50,20 @@ define(['../../vendor/backbone','./tool','../color'],function(Backbone,Tool,Colo
 			if (point) {
 				var down = this.get('downPoint');
 				this.get('painting').displayInContext(context);
-				if (this.get('fillColor') && !this.get('ignoreFill')) {
-					context.fillRect(down.x,down.y,point.x-down.x,point.y-down.y);
-				}
-				context.strokeRect(down.x,down.y,point.x-down.x,point.y-down.y);
+				this.drawAtPoints(context,down,point);
 				this.get('painting').copyFromContext(context);
 			}
 				
 			this.set({
 				lastPoint: null,
-				pathPoints: []
+				downPoint: null
 			});
+		},
+		drawAtPoints: function(context,pointA,pointB) {
+			if (this.get('fillColor') && !this.get('ignoreFill')) {
+				context.fillRect(pointA.x,pointA.y,pointB.x-pointA.x,pointB.y-pointA.y);
+			}
+			context.strokeRect(pointA.x,pointA.y,pointB.x-pointA.x,pointB.y-pointA.y);
 		}
 	});
 });

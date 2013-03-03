@@ -3,43 +3,64 @@ define(['../vendor/jquery',
 	'../models/tools/ellipse',
 	'../models/tools/pencil',
 	'../models/tools/rectangle',
-	'../models/tools/polygon'],function($,
+	'../models/tools/polygon',
+	'../models/tools/roundedRectangle',
+	'../models/tools/line',
+	'../models/tools/bezierLine',
+	'../models/tools/fillColor',
+	'../models/tools/eraser',
+	'../models/tools/text',
+	'../models/tools/sprayCan',
+	'../models/tools/rectangleSelect',
+	'../models/tools/freehandSelect'],function($,
 		ToolButton,
 		Ellipse,
 		Pencil,
 		Rectangle,
-		Polygon) {
+		Polygon,
+		RoundedRectangle,
+		Line,
+		BezierLine,
+		FillColor,
+		Eraser,
+		Text,
+		SprayCan,
+		RectangleSelect,
+		FreehandSelect) {
 	return {
-		polygonSelect: function(props) {
-			return null;
+		freehandSelect: function(props) {
+			return new FreehandSelect(props);
 		},
 		rectangeSelect: function(props) {
-			return null;
+			return new RectangleSelect(props);
 		},
 		sprayCan: function(props) {
-			return null
+			return new SprayCan(props);
 		},
 		text: function(props) {
-			return null;
+			return new Text(props);
 		},
 		selectiveErase: function(props) {
-			return null;
+			props.selective = true;
+			props.name = 'Selective Erase';
+			props.namespace = 'selective-erase';
+			return new Eraser(props);
 		},
 		erase: function(props) {
-			return null;
+			return new Eraser(props);
 		},
 		fillColor: function(props) {
-			return null;
+			return new FillColor(props);
 		},
 		strokeColor: function(props) {
 			props.ignoreFill = true;
 			return new Pencil(props);
 		},
 		bezierLine: function(props) {
-			return null;
+			return new BezierLine(props);
 		},
 		line: function(props) {
-			return null;
+			return new Line(props);
 		},
 		strokeRect: function(props) {
 			props.ignoreFill = true;
@@ -56,12 +77,12 @@ define(['../vendor/jquery',
 			props.ignoreFill = true;
 			props.name = 'Stroke Rounded Rectangle';
 			props.namespace = 'stroke-round-rect';
-			return null;
+			return new RoundedRectangle(props);
 		},
 		fillRoundRect: function(props) {
 			props.name = 'Fill Rounded Rectangle';
 			props.namespace = 'fill-round-rect';
-			return null;
+			return new RoundedRectangle(props);
 		},
 		strokeEllipse: function(props) {
 			props.ignoreFill = true;

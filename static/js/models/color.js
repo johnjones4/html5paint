@@ -14,6 +14,9 @@ define(['../vendor/backbone'],function(Backbone) {
 				return 'rgba('+this.get('red')+','+this.get('green')+','+this.get('blue')+','+this.get('alpha')+')';
 			else
 				return 'rgb('+this.get('red')+','+this.get('green')+','+this.get('blue')+')';
+		},
+		equalsColor: function(otherColor) {
+			return this.cssColor() == otherColor.cssColor();
 		}
 	});
 });
